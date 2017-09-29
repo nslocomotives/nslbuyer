@@ -17,3 +17,20 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+app:
+    ebay_sandbox:
+        credentials:
+            devId: ~
+            appId: ~
+            certId: ~
+        authToken: ~
+        oauthUserToken: ~
+        ruName: ~
+    ebay_production:
+        credentials:
+            devId: ~
+            appId: ~
+            certId: ~
+        authToken: ~
+        oauthUserToken: ~
+        ruName: ~

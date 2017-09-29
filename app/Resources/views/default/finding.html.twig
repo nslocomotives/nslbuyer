@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <div id="ebayTime">
+	<h2>keywords..</h2>{{ keywords }}
+  </div>
+  {% if alert is defined %}
+  <div class="alert alert-danger" role="alert">
+    {{ alert }}
+  </div>
+  {% endif %}
+  <div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Item Number</th>
+        <th>Description</th>
+        <th>Currency</th>
+	    <th>Amount</th>
+	    <th>Shipping</th>
+	    <th>Primary Category</th>
+	    <th>End Time</th>
+	    <th>Picture</th>
+      </tr>
+    </thead>
+
+    <tbody>
+	  {% for result in results %}
+	    <tr>
+          <th scope="row">{{ result.row }}</th>
+	      <td><a href="{{ result.viewItemURL }}" target="_blank">{{ result.itemId }} </a> </td>
+	      <td>{{ result.title }}</td>
+	      <td>{{ result.currenyId }}</td>
+	      <td>{{ result.value }}</td>
+	      <td>{{ result.shipping}}</td>
+	      <td>{{ result.primary_cat }} </td>
+	      <td class="text-nowrap">{{ result.TimeLeft|date('Y-m-d H:i:s') }}</td>
+	      <td><img src="{{result.galleryURL}}" class="img-thumbnail"></td>
+	    </tr>
+	  {% endfor %}
+    </tbody>
+  </table>
+  </div>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<div class="container">
+	<div class="row">
+	<div class="col">
+		<center>
+		  <p id="logo">nslbuyer</p>
+		  <br>
+            <div class="card" style="width: 20rem;">
+			  <div class="card-body">
+				
+				<form  action="{{ path("fos_user_security_check") }}" method="post">
+				{% if csrf_token %}
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+				{% endif %}
+				<div class="form-group">
+				<input type="text" class="form-control" placeholder="{{ 'security.login.username'|trans }}" id="username" name="_username" value="{{ last_username }}" required="required" />
+				</div>
+				<div class="form-group">
+				<input type="password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" id="password" name="_password" required="required" />
+				</div>
+				<div class="form-group">
+				<input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+				</div>
+				<div class="fom-group">
+				<label class="checkbox pull-left" for="remember_me">
+					<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+					{{ 'security.login.remember_me'|trans }}
+				</label>
+				</div>
+				</form>
+			<hr>
+			<a href="{{ path("fos_user_resetting_request") }}">Forgot your password?</a>
+			</div>
+			</div>
+
+		<div>
+		<br>
+		  <ul class="list-inline">
+			<li class="list-inline-item">Not a customer?</li>
+			<li class="list-inline-item"><a class="btn btn-lrg btn-light" href="{{ path("fos_user_registration_register") }}" class="text-center new-account">Create an account </a></li>
+		  </ul>
+		</div>
+	  </center>
+	</div>
+		</div>
+		<div class="col">
+		</div>
+    </div>
+</div>
+

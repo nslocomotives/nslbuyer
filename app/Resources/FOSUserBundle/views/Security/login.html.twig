@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block menu %}{% endblock %}
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}
+
+{% block footer %}
+<div class="footer">
+  <center>
+    <footer>
+	  <small>&copy; 2017 Nigel Smith DevOps Engineer</small>
+	</footer>
+  </center>
+</div>
+{% endblock %}
