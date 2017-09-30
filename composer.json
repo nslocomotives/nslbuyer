@@ -18,6 +18,7 @@
         "dts/ebay-sdk-php": "*",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "~2.0",
+        "mgilet/notification-bundle": "dev-master",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.0.2",
