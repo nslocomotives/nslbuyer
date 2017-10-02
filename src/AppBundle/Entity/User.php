@@ -16,6 +16,13 @@ use Mgilet\NotificationBundle\Model\UserNotificationInterface;
 class User extends BaseUser implements UserNotificationInterface
 {
 
+	// link to notifications
+    /**
+     * @var Notification
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Notification", mappedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $notifications;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -23,13 +30,6 @@ class User extends BaseUser implements UserNotificationInterface
      */
     protected $id;
 	
-	// link to notifications
-    /**
-     * @var Notification
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Notification", mappedBy="user", orphanRemoval=true)
-     */
-    protected $notifications;
-
     public function __construct()
     {
         parent::__construct();
