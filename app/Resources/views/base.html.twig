@@ -36,7 +36,7 @@
 	      <ul class="navbar-nav">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<li class="nav-item">
-			<i class="fa fa-bell" aria-hidden="true"></i>{{ mgilet_notification_render({ 'display': 'dropdown', 'seen': false }) }}
+			{{ mgilet_notification_render({ 'display': 'dropdown', 'seen': false }) }}
 			</li>
               <li class="nav-item">
 		        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}

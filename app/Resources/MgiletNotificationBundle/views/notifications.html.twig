@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+Notifications :
+{% for notification in notifications %}
+    {{ notification }}
+{% endfor %}
+
+{% endblock %}
+
