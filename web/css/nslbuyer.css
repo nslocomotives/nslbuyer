@@ -23,3 +23,12 @@ font-size: 2.5em;
 font-family: 'Pacifico', cursive;
 font-size: 1.5em;
 }
+
+.watch {
+background-image: url('../bundles/app/images/watch_bg.jpg');
+background-size: cover;
+color:#ffffff;
+padding-top: 20%;
+padding-bottom: 20%;
+border-radius: 0;
+}

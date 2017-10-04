@@ -28,11 +28,17 @@ class DefaultController extends Controller
 		$ebayTime = new EbayTime();
 		$ebayTime = $ebayTime->getEbayTime($ebay_creds['credentials']);
 		
-		// replace this example code with whatever you need
+		if (!$this->get('security.context')->isGranted('ROLE_USER')) {
         return $this->render('default/index.html.twig', array(
 			'rand_message'  => $message,
 			'ebay_time'     => $ebayTime,
-        ));
+		));
+		} else {
+        return $this->render('default/index_authenticated.html.twig', array(
+			'rand_message'  => $message,
+			'ebay_time'     => $ebayTime,
+		));
+		}
     }
 	
 	/**

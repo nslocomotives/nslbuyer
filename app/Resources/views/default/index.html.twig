@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
-
+{% block menu %}{% endblock %}
 {% block body %}
-<div class="container">
-
-  <div id="ebayTime">
-	<h3>Ebay time is {{ ebay_time|date('Y-m-d H:i:s') }} </h3>
-	<p>Random message of the day{{ rand_message }}</p>
+  <div class="jumbotron watch" >
+	<div
+	<div id="logo-1">
+	nslbuyer
+	</div>
+	<br>
+	<p class="lead">{{ rand_message }}</p>
+	<a class="btn btn-lg btn-light" href="#">More Information</a> <a class="btn btn-lg btn-outline-light"href="{{ path('fos_user_security_login') }}">Login</a>
   </div>
-</div>
 {% endblock %}
