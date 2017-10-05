@@ -9,16 +9,19 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Service\MessageGenerator;
 use AppBundle\Service\EbayTime;
 use AppBundle\Service\EbayFind;
+use AppBundle\Service\EbayAppToken;
+use Psr\Log\LoggerInterface;
 
 
 class DefaultController extends Controller
 {
-	
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction()
     {
+		$logger = $this->get('logger');
+		$logger->info('I just got the logger');
         $ebay_creds	= $this->getParameter('ebay_production');
 		// Get random message
 		$messageGenerator = new MessageGenerator();
@@ -27,6 +30,14 @@ class DefaultController extends Controller
 		// Create ebay time.
 		$ebayTime = new EbayTime();
 		$ebayTime = $ebayTime->getEbayTime($ebay_creds['credentials']);
+		
+		
+		$ebay_creds	= $this->getParameter('ebay_sandbox');
+		$ebay_creds['sandbox_mode'] = true;
+		$logger->info(var_export($ebay_creds, true));
+		// Create token time.
+		$ebayAppToken = new EbayAppToken();
+		$ebayAppToken = $ebayAppToken->getEbayAppToken($ebay_creds, $logger);
 		
 		if (!$this->get('security.context')->isGranted('ROLE_USER')) {
         return $this->render('default/index.html.twig', array(
