@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Search</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ search.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ search.name }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ search.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionsearch</th>
+                <td>{% if search.descriptionSearch %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Sortorder</th>
+                <td>{{ search.sortOrder }}</td>
+            </tr>
+            <tr>
+                <th>Maxprice</th>
+                <td>{{ search.maxPrice }}</td>
+            </tr>
+            <tr>
+                <th>Listingtype</th>
+                <td>{{ search.listingType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('search_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('search_edit', { 'id': search.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

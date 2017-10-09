@@ -20,34 +20,36 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-		$logger = $this->get('logger');
-		$logger->info('I just got the logger');
-        $ebay_creds	= $this->getParameter('ebay_production');
+		//$em = $this->getDoctrine()->getManager();
+
+		//$logger = $this->get('logger');
+
+        //$ebay_creds	= $this->getParameter('ebay_production');
 		// Get random message
 		$messageGenerator = new MessageGenerator();
 		$message = $messageGenerator->getHappyMessage();
 
 		// Create ebay time.
-		$ebayTime = new EbayTime();
-		$ebayTime = $ebayTime->getEbayTime($ebay_creds['credentials']);
+		//$ebayTime = new EbayTime();
+		//$ebayTime = $ebayTime->getEbayTime($ebay_creds['credentials']);
 		
 		
-		$ebay_creds	= $this->getParameter('ebay_sandbox');
-		$ebay_creds['sandbox_mode'] = true;
-		$logger->info(var_export($ebay_creds, true));
-		// Create token time.
-		$ebayAppToken = new EbayAppToken();
-		$ebayAppToken = $ebayAppToken->getEbayAppToken($ebay_creds, $logger);
+		//$ebay_creds	= $this->getParameter('ebay_sandbox');
+		//$ebay_creds['sandbox_mode'] = true;
+		//$logger->info(var_export($ebay_creds, true));
+		
+				// Create token.
+		//$ebayAppToken = $this->get('app.ebay_app_token');
+		//$ebayAppToken = $ebayAppToken->getEbayAppToken($ebay_creds);
+		
 		
 		if (!$this->get('security.context')->isGranted('ROLE_USER')) {
         return $this->render('default/index.html.twig', array(
 			'rand_message'  => $message,
-			'ebay_time'     => $ebayTime,
 		));
 		} else {
         return $this->render('default/index_authenticated.html.twig', array(
 			'rand_message'  => $message,
-			'ebay_time'     => $ebayTime,
 		));
 		}
     }

@@ -23,6 +23,13 @@ class User extends BaseUser implements UserNotificationInterface
      */
     protected $notifications;
 
+	// link to tokens
+    /**
+     * @var Token
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Token", mappedBy="user", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    protected $tokens;
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
