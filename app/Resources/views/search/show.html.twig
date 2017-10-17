@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseContainer.html.twig' %}
 
 {% block body %}
     <h1>Search</h1>
@@ -15,23 +15,23 @@
             </tr>
             <tr>
                 <th>Keywords</th>
-                <td>{{ search.keywords }}</td>
+                <td>{% if search.keywords %}{{ search.keywords|join(', ') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Descriptionsearch</th>
                 <td>{% if search.descriptionSearch %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Sortorder</th>
-                <td>{{ search.sortOrder }}</td>
+                <th>Listingtype</th>
+                <td>{% if search.listingType %}{{ search.listingType|join(', ') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Maxprice</th>
                 <td>{{ search.maxPrice }}</td>
             </tr>
             <tr>
-                <th>Listingtype</th>
-                <td>{{ search.listingType }}</td>
+                <th>Sortorder</th>
+                <td>{{ search.sortOrder }}</td>
             </tr>
         </tbody>
     </table>

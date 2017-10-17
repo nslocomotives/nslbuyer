@@ -1,18 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseContainer.html.twig' %}
 
 {% block body %}
     <h1>Searches list</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Keywords</th>
                 <th>Descriptionsearch</th>
-                <th>Sortorder</th>
-                <th>Maxprice</th>
                 <th>Listingtype</th>
+                <th>Maxprice</th>
+                <th>Sortorder</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,11 +21,11 @@
             <tr>
                 <td><a href="{{ path('search_show', { 'id': search.id }) }}">{{ search.id }}</a></td>
                 <td>{{ search.name }}</td>
-                <td>{{ search.keywords }}</td>
+                <td>{% if search.keywords %}{{ search.keywords|join(', ') }}{% endif %}</td>
                 <td>{% if search.descriptionSearch %}Yes{% else %}No{% endif %}</td>
-                <td>{{ search.sortOrder }}</td>
+                <td>{% if search.listingType %}{{ search.listingType|join(', ') }}{% endif %}</td>
                 <td>{{ search.maxPrice }}</td>
-                <td>{{ search.listingType }}</td>
+                <td>{{ search.sortOrder }}</td>
                 <td>
                     <ul>
                         <li>

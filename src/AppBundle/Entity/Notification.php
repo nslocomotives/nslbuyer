@@ -55,4 +55,14 @@ class Notification extends AbstractNotification
         return $this;
     }
 
+
+    /**
+     * Get seen
+     *
+     * @return boolean
+     */
+    public function getSeen()
+    {
+        return $this->seen;
+    }
 }

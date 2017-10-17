@@ -218,4 +218,3 @@ class Items
         return $this->categoryName;
     }
 }
-

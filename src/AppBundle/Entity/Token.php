@@ -125,4 +125,3 @@ class Token
         return $this->user;
     }
 }
-

@@ -86,4 +86,38 @@ class User extends BaseUser implements UserNotificationInterface
     {
         $this->getId();
     }
+
+    /**
+     * Add token
+     *
+     * @param \AppBundle\Entity\Token $token
+     *
+     * @return User
+     */
+    public function addToken(\AppBundle\Entity\Token $token)
+    {
+        $this->tokens[] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Remove token
+     *
+     * @param \AppBundle\Entity\Token $token
+     */
+    public function removeToken(\AppBundle\Entity\Token $token)
+    {
+        $this->tokens->removeElement($token);
+    }
+
+    /**
+     * Get tokens
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTokens()
+    {
+        return $this->tokens;
+    }
 }

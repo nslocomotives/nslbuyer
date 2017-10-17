@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseContainer.html.twig' %}
 
 {% block body %}
     <h1>Search creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+	
+		{{ form_row(form.name) }}
+		{{ form_row(form.keywords) }}
+		{{ form_row(form.descriptionSearch) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
