@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-		//$em = $this->getDoctrine()->getManager();
+		$em = $this->getDoctrine()->getManager();
 
 		//$logger = $this->get('logger');
 
@@ -29,6 +29,12 @@ class DefaultController extends Controller
 		$messageGenerator = new MessageGenerator();
 		$message = $messageGenerator->getHappyMessage();
 
+		//get widget data
+		$user = $this->container->get('security.context')->getToken()->getUser();
+		$searches= $em->getRepository('AppBundle:Search')->findByUser($user);
+		$filters= $em->getRepository('AppBundle:EbayFilters')->findByUser($user);
+		
+		
 		// Create ebay time.
 		//$ebayTime = new EbayTime();
 		//$ebayTime = $ebayTime->getEbayTime($ebay_creds['credentials']);
@@ -50,6 +56,8 @@ class DefaultController extends Controller
 		} else {
         return $this->render('default/index_authenticated.html.twig', array(
 			'rand_message'  => $message,
+			'searchTally'	=> count($searches),
+			'filterTally'	=> count($filters),
 		));
 		}
     }

@@ -21,7 +21,7 @@ class SearchType extends AbstractType
         $builder->add('name')
 				->add('keywords', ArrayTextType::class)
 				->add('descriptionSearch')
-				->add('listingType')
+				->add('listingType', ArrayTextType::class)
 				->add('maxPrice', MoneyType::class, array(
 					'divisor' => 100,
 					'currency' => 'GBP',

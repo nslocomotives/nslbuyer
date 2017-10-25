@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class SearchRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function countNumberOfSearches(User $user)
+    {
+        return $this->createQueryBuilder('sc')
+            ->andWhere('sc.user = :user')
+            ->setParameter('user', $user)
+            ->select('COUNT(sc.id) as tally')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

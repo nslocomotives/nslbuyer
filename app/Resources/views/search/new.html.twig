@@ -1,9 +1,9 @@
-{% extends 'baseContainer.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block body %}
     <h1>Search creation</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 	
 		{{ form_row(form.name) }}
 		{{ form_row(form.keywords) }}

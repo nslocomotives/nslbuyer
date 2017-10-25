@@ -18,6 +18,7 @@
         "dts/ebay-sdk-php": "*",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "~2.0",
+        "indigophp/cookie-consent-bundle": "^0.2.0",
         "knpuniversity/oauth2-client-bundle": "^1.12",
         "mgilet/notification-bundle": "dev-master",
         "omnipay/paypal": "~2.0",

@@ -1,14 +1,10 @@
-{% extends 'baseContainer.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block body %}
     <h1>Search</h1>
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ search.id }}</td>
-            </tr>
             <tr>
                 <th>Name</th>
                 <td>{{ search.name }}</td>
@@ -38,10 +34,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('search_index') }}">Back to the list</a>
+            <a class="btn" href="{{ path('search_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('search_edit', { 'id': search.id }) }}">Edit</a>
+            <a class="btn" href="{{ path('search_edit', { 'id': search.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

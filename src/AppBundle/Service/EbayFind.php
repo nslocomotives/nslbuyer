@@ -49,9 +49,12 @@ class EbayFind
 		*
 		* Notice that we can take advantage of the fact that the SDK allows object properties to be assigned via the class constructor.
 		*/
+		
+		$data['maxPrice'] = number_format($data['maxPrice']/100,2);
+				
 		$request->itemFilter[] = new Types\ItemFilter([
 			'name' => 'MaxPrice',
-			'value' => ['40.00']
+			'value' => [$data['maxPrice']]
 		]);
 		/**
 		* Sort the results by current price.
@@ -74,6 +77,11 @@ class EbayFind
 		if ($response->ack !== 'Failure') {
 			foreach ($response->searchResult->item as $item) {
 				$count++;
+				if (isset($item->shippingInfo->shippingServiceCost)) {
+					$shipping = $item->shippingInfo->shippingServiceCost->value;
+				} else {
+					$shipping = 'Not Set';
+				}
 				$data['results'][]= array(
 					'row'			=> $count,
 					'itemId' 		=> $item->itemId,
@@ -83,7 +91,7 @@ class EbayFind
 					'value'			=> $item->sellingStatus->currentPrice->value,
 					'viewItemURL' 	=> $item->viewItemURL,
 					'galleryURL' 	=> $item->galleryURL,
-					'shipping' 		=> $item->shippingInfo->shippingServiceCost->value,
+					'shipping' 		=> $shipping,
 					'primary_cat'	=> $item->primaryCategory->categoryName
 					);
 

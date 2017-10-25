@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ebayfilters</h1>
+
+  {% if ebayFilters %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Filter Name</th>
+                <th>Selected Options</th>
+				<th>Details</th>
+				<th>Type of Search</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ebayFilter in ebayFilters %}
+            <tr>
+                <td><a href="{{ path('ebayfilters_edit', { 'id': ebayFilter.id }) }}">{{ ebayFilter.fltName }}</a></td>
+                <td>
+				<small class="text-muted">
+				<ul class="list-unstyled">
+					{% if ebayFilter.fltAuthorizedSellerOnly %} <li> - Listings from Authorised sellers only</li>{% endif %}
+					{% if ebayFilter.fltBestOfferOnly %} 		<li> - Listings with Best Offer Only</li>{% endif %}
+					{% if ebayFilter.fltCharityOnly %}			<li> - Charity Listings Only</li>{% endif %}
+					{% if ebayFilter.fltExcludeAutoPay %}		<li> - Exclude Auto Pay Listings</li>{% endif %}
+					{% if ebayFilter.fltFeaturedOnly %}			<li> - Featured Only</li>{% endif %}
+					{% if ebayFilter.fltFreeShippingOnly %}		<li> - Free Shipping Only{% endif %}
+					{% if ebayFilter.fltGetItFastOnly %}		<li> - Get it Fast Only</li>{% endif %}
+					{% if ebayFilter.fltHideDuplicateItems %}	<li> - Hide Duplicate Items</li>{% endif %}
+					{% if ebayFilter.fltLocalPickupOnly %}		<li> - Local Pick Up Only</li>{% endif %}
+					{% if ebayFilter.fltLocalSearchOnly %}		<li> - Local Search Only</li>{% endif %}
+					{% if ebayFilter.fltLotsOnly %}				<li> - Lots Only</li>{% endif %}				
+					{% if ebayFilter.fltOutletSellerOnly %}		<li> - Outlet Sellers Only</li>{% endif %}
+					{% if ebayFilter.fltReturnsAcceptedOnly %}	<li> - Returns Accepted Only</li>{% endif %}
+					{% if ebayFilter.fltSoldItemsOnly %}		<li> - Sold Items Only</li>{% endif %}
+					{% if ebayFilter.fltTopRatedSellerOnly %}	<li> - Top Rated Sellers Only</li>{% endif %}
+					{% if ebayFilter.fltValueBoxInventory %}	<li> - Value Box Inventory</li>{% endif %}
+					{% if ebayFilter.fltWorldOfGoodOnly %}		<li> - World Of Good Only</li>{% endif %}
+				</ul>
+				</small>
+				</td>
+				<td>
+				Excluded Categories: {% if ebayFilter.fldExcludeCategory %}{{ ebayFilter.fldExcludeCategory|join(', ') }} {% else %}<small class="text-muted">None</small> {% endif %}</br>
+				Excluded Sellers: {% if ebayFilter.fltExcludeSeller %}{{ ebayFilter.fltExcludeSeller|join(', ') }} {% else %}<small class="text-muted">None</small> {% endif %}</br>
+				Expedited Shipping Types: {% if ebayFilter.fltExpeditedShippingType %}{{ ebayFilter.fltExpeditedShippingType|join(', ') }} {% else %}<small class="text-muted">None</small> {% endif %}</br>
+				Listing Type: {% if ebayFilter.fltListingType %}{{ ebayFilter.fltListingType|join(', ') }} {% else %}<small class="text-muted">Not Defined</small> {% endif %}</br>
+				Sellers: {% if ebayFilter.fltSeller %}{{ ebayFilter.fltSeller|join(', ') }}{% else %}<small class="text-muted">Not Defined</small> {% endif %}</br>
+				{% if ebayFilter.fltAvailableTo %}Listings Only Available To: <small class="text-muted">{{ ebayFilter.fltAvailableTo }}</small></br>{% endif %}
+                {% if ebayFilter.fltCondition %} Condition: <small class="text-muted">{{ ebayFilter.fltCondition|join(', ') }}</small></br>{% endif %}
+                {% if ebayFilter.fltCurrency %}Currency : <small class="text-muted">{{ ebayFilter.fltCurrency }}</small></br>{% endif %}
+                {% if ebayFilter.fltFeedbackScoreMax %}Max Feedback Score: <small class="text-muted">{{ ebayFilter.fltFeedbackScoreMax }}</small></br>{% endif %}
+                {% if ebayFilter.fltFeedbackScoreMin %}Min Feedback Score: <small class="text-muted">{{ ebayFilter.fltFeedbackScoreMin }}</small></br>{% endif %}
+				{% if ebayFilter.fltListedIn %} Listed in: <small class="text-muted">{{ ebayFilter.fltListedIn }}</small></br>{% endif %}
+				{% if ebayFilter.fltLocatedIn %}Located In: <small class="text-muted">{{ ebayFilter.fltLocatedIn }}</small></br>{% endif %}
+                {% if ebayFilter.fltMaxBids %}Maximum Number of Bids:<small class="text-muted">{{ ebayFilter.fltMaxBids }}</small></br>{% endif %}
+                {% if ebayFilter.fltMaxDistance %}Maximum Distance:<small class="text-muted">{{ ebayFilter.fltMaxDistance }}</small></br>{% endif %}
+                {% if ebayFilter.fltMaxHandlingTime %}Maximum Handling Time:<small class="text-muted">{{ ebayFilter.fltMaxHandlingTime }}</small></br>{% endif %}
+                {% if ebayFilter.fltMaxPrice %}Maximum Price:<small class="text-muted">{{ ebayFilter.fltMaxPrice }}</small></br>{% endif %}
+                {% if ebayFilter.fltMaxQuantity %}Maximum Quantity:<small class="text-muted">{{ ebayFilter.fltMaxQuantity }}</small></br>{% endif %}
+                {% if ebayFilter.fltMinBids %}Minimum Bids:<small class="text-muted">{{ ebayFilter.fltMinBids }}</small></br>{% endif %}
+                {% if ebayFilter.fltMinPrice %}Minimum Price:<small class="text-muted">{{ ebayFilter.fltMinPrice }}</small></br>{% endif %}
+                {% if ebayFilter.fltMinQuantity %}Minimum Quantity:<small class="text-muted">{{ ebayFilter.fltMinQuantity }}</small></br>{% endif %}
+				{% if ebayFilter.fltPaymentMethod %}Payment Method:<small class="text-muted">{{ ebayFilter.fltPaymentMethod }}</small></br>{% endif %}
+				{% if ebayFilter.fltSellerBusinessType %}Seller Business Type:<small class="text-muted">{{ ebayFilter.fltSellerBusinessType }}</small></br>{% endif %}
+				</td>
+				
+                <td>
+				{% if ebayFilter.fltEndTimeFrom %}
+					End Time From:<small class="text-muted">{{ ebayFilter.fltEndTimeFrom|date('Y-m-d H:i:s') }} </small> 
+					To:<small class="text-muted">{% if ebayFilter.fltEndTimeTo %}{{ ebayFilter.fltEndTimeTo|date('Y-m-d H:i:s') }} {% else %}Value To Not set</small> {% endif %}
+				{% endif %}
+				{% if ebayFilter.fltModTimeFrom %}
+					Listing modified Time From:{{ ebayFilter.fltModTimeFrom|date('Y-m-d H:i:s') }}
+				{% endif %}
+				{% if ebayFilter.fltStartTimeFrom %}
+					Listing Start Time From:<small class="text-muted">{{ ebayFilter.fltStartTimeFrom|date('Y-m-d H:i:s') }}</small>
+					To:<small class="text-muted">{% if ebayFilter.fltStartTimeTo %}{{ ebayFilter.fltStartTimeTo|date('Y-m-d H:i:s') }} {% else %}Value Not set</small> {% endif %}
+				{% endif %}
+				
+				</td>
+				
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ebayfilters_show', { 'id': ebayFilter.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ebayfilters_edit', { 'id': ebayFilter.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+	{% endif %}
+
+    <ul>
+        <li>
+            <a href="{{ path('ebayfilters_new') }}">Create a new ebayFilter</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -4,11 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Search;
 use AppBundle\Form\SearchType;
+use AppBundle\Service\EbayFind;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Search controller.
@@ -27,8 +29,10 @@ class SearchController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+		
+		$user = $this->container->get('security.context')->getToken()->getUser();
 
-        $searches = $em->getRepository('AppBundle:Search')->findAll();
+        $searches = $em->getRepository('AppBundle:Search')->findByUser($user);
 
         return $this->render('search/index.html.twig', array(
             'searches' => $searches,
@@ -48,8 +52,11 @@ class SearchController extends Controller
 		
         $form = $this->createForm('AppBundle\Form\SearchType', $search);
         $form->handleRequest($request);
+		
+		$user = $this->container->get('security.context')->getToken()->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
+			$search->setUser($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($search);
             $em->flush();
@@ -141,5 +148,41 @@ class SearchController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+	
+	 /**
+     * Finds and runs a search entity.
+     *
+     * @Route("/run/{id}", name="search_run")
+	 * @Security("has_role('ROLE_SUBSCRIBER')")
+     * @Method("GET")
+     */
+    public function runAction(Search $search)
+    {
+		$data = [];
+		$data = $this->getParameter('ebay_production');	
+		
+		//get the search terms from doctrine
+		$em = $this->getDoctrine()->getManager();
+		$terms = $em->getRepository('AppBundle:Search')->find($search);
+
+		//extract the rest of the data
+		$data['name'] = $terms->getName();
+		$data['keywords'] = $terms->getKeywords();
+		$data['listingType'] = $terms->getListingType();
+		$data['descriptionSearch'] = $terms->getDescriptionSearch();
+		$data['maxPrice'] = $terms->getMaxPrice();
+		$data['sortOrder'] = $terms->getSortOrder();
+  
+		//extract the keywords in a space separated list
+		$data['keywords'] = $data['keywords']->toArray();
+		$data['keywords'] = implode(' ', $data['keywords']);
+		
+		// Get listings from ebay
+		$ebayFind = new EbayFind();
+		$data = $ebayFind->getEbayListings($data);
+		
+		// replace this example code with whatever you need
+        return $this->render('default/finding.html.twig', $data);
     }
 }

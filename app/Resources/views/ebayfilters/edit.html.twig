@@ -1,0 +1,68 @@
+{% extends 'baseContainer.html.twig' %}
+
+{% block body %}
+    <h1>Ebayfilter edit</h1>
+
+    {{ form_start(edit_form, {'attr': {'novalidate': 'novalidate'}}) }}
+		{{ form_errors(edit_form) }}
+		
+        {{ form_row(edit_form.fltName, { 'label': 'Filter Name ' }) }}
+		{{ form_row(edit_form.fltAuthorizedSellerOnly, { 'label': 'Authorised Seller Only' }) }}
+		{{ form_row(edit_form.fltAvailableTo, { 'label': 'Available To' }) }}
+		{{ form_row(edit_form.fltBestOfferOnly, { 'label': 'Best Offer Only' }) }}
+		{{ form_row(edit_form.fltCharityOnly, { 'label': 'Charity Only' }) }}
+		{{ form_row(edit_form.fltCondition, { 'label': 'Condition' }) }}
+		{{ form_row(edit_form.fltCurrency, { 'label': 'Currency' }) }}
+		{{ form_row(edit_form.fltEndTimeFrom, { 'label': 'End Time From' }) }}
+		{{ form_row(edit_form.fltEndTimeTo, { 'label': 'End Time To' }) }}
+		{{ form_row(edit_form.fltExcludeAutoPay, { 'label': 'Exclude Auto Pay' }) }}
+		{{ form_row(edit_form.fldExcludeCategory, { 'label': 'Exclude Catagory' }) }}
+		{{ form_row(edit_form.fltExcludeSeller, { 'label': 'Exclude Seller' }) }}
+		{{ form_row(edit_form.fltExpeditedShippingType, { 'label': 'Expedited Shipping Type' }) }}
+		{{ form_row(edit_form.fltFeaturedOnly, { 'label': 'Featured Only' }) }}
+		{{ form_row(edit_form.fltFeedbackScoreMax, { 'label': 'Feedback Score Max' }) }}
+		{{ form_row(edit_form.fltFeedbackScoreMin, { 'label': 'Feedback Score Min' }) }}
+		{{ form_row(edit_form.fltFreeShippingOnly, { 'label': 'Free Shipping Only' }) }}
+		{{ form_row(edit_form.fltGetItFastOnly, { 'label': 'Get It Fast Only' }) }}
+		{{ form_row(edit_form.fltHideDuplicateItems, { 'label': 'Hide Duplicate Items' }) }}
+		{{ form_row(edit_form.fltListedIn, { 'label': 'Listed In' }) }}
+		{{ form_row(edit_form.fltListingType, { 'label': 'Listing Type' }) }}
+		{{ form_row(edit_form.fltLocalPickupOnly, { 'label': 'Local Pickup Only' }) }}
+		{{ form_row(edit_form.fltLocalSearchOnly, { 'label': 'Local Search Only' }) }}
+		{{ form_row(edit_form.fltLocatedIn, { 'label': 'Located In' }) }}
+		{{ form_row(edit_form.fltLotsOnly, { 'label': 'Lots Only' }) }}
+		{{ form_row(edit_form.fltMaxBids, { 'label': 'Max bids' }) }}
+		{{ form_row(edit_form.fltMaxDistance, { 'label': 'Max Distance' }) }}
+		{{ form_row(edit_form.fltMaxHandlingTime, { 'label': 'Max handling Time' }) }}
+		{{ form_row(edit_form.fltMaxPrice, { 'label': 'Max Price' }) }}
+		{{ form_row(edit_form.fltMaxQuantity, { 'label': 'Max Quantity' }) }}
+		{{ form_row(edit_form.fltMinBids, { 'label': 'Min Bids' }) }}
+		{{ form_row(edit_form.fltMinPrice, { 'label': 'Min Price' }) }}
+		{{ form_row(edit_form.fltMinQuantity, { 'label': 'Min Quantity' }) }}
+		{{ form_row(edit_form.fltModTimeFrom, { 'label': 'Mod Time From' }) }}
+		{{ form_row(edit_form.fltOutletSellerOnly, { 'label': 'Outlet Seller Only' }) }}
+		{{ form_row(edit_form.fltPaymentMethod, { 'label': 'Payment Method' }) }}
+		{{ form_row(edit_form.fltReturnsAcceptedOnly, { 'label': 'Returns Accepted Only' }) }}
+		{{ form_row(edit_form.fltSeller, { 'label': 'Seller' }) }}
+		{{ form_row(edit_form.fltSellerBusinessType, { 'label': 'Seller Business Type' }) }}
+		{{ form_row(edit_form.fltSoldItemsOnly, { 'label': 'Sold Items Only' }) }}
+		{{ form_row(edit_form.fltStartTimeFrom, { 'label': 'Start Time From' }) }}
+		{{ form_row(edit_form.fltStartTimeTo, { 'label': 'Start Time To' }) }}
+		{{ form_row(edit_form.fltTopRatedSellerOnly, { 'label': 'Top Rated Seller Only' }) }}
+		{{ form_row(edit_form.fltValueBoxInventory, { 'label': 'Value Box Inventory' }) }}
+		{{ form_row(edit_form.fltWorldOfGoodOnly, { 'label': 'World Of Good Only' }) }}
+		
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('ebayfilters_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Searchfilter</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ searchFilter.id }}</td>
+            </tr>
+            <tr>
+                <th>Fltname</th>
+                <td>{{ searchFilter.fltName }}</td>
+            </tr>
+            <tr>
+                <th>Fltauthorizedselleronly</th>
+                <td>{% if searchFilter.fltAuthorizedSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltavailableto</th>
+                <td>{{ searchFilter.fltAvailableTo }}</td>
+            </tr>
+            <tr>
+                <th>Fltbestofferonly</th>
+                <td>{% if searchFilter.fltBestOfferOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcharityonly</th>
+                <td>{% if searchFilter.fltCharityOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcondition</th>
+                <td>{% if searchFilter.fltCondition %}{{ searchFilter.fltCondition|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcurrency</th>
+                <td>{{ searchFilter.fltCurrency }}</td>
+            </tr>
+            <tr>
+                <th>Fltendtimefrom</th>
+                <td>{% if searchFilter.fltEndTimeFrom %}{{ searchFilter.fltEndTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltendtimeto</th>
+                <td>{% if searchFilter.fltEndTimeTo %}{{ searchFilter.fltEndTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexcludeautopay</th>
+                <td>{% if searchFilter.fltExcludeAutoPay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexcludecategory</th>
+                <td>{% if searchFilter.fltExcludeCategory %}{{ searchFilter.fltExcludeCategory|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexcludeseller</th>
+                <td>{% if searchFilter.fltExcludeSeller %}{{ searchFilter.fltExcludeSeller|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexpeditedshippingtype</th>
+                <td>{{ searchFilter.fltExpeditedShippingType }}</td>
+            </tr>
+            <tr>
+                <th>Fltfeaturedonly</th>
+                <td>{% if searchFilter.fltFeaturedOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltfeedbackscoremax</th>
+                <td>{{ searchFilter.fltFeedbackScoreMax }}</td>
+            </tr>
+            <tr>
+                <th>Fltfeedbackscoremin</th>
+                <td>{{ searchFilter.fltFeedbackScoreMin }}</td>
+            </tr>
+            <tr>
+                <th>Fltfreeshippingonly</th>
+                <td>{% if searchFilter.fltFreeShippingOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltgetitfastonly</th>
+                <td>{% if searchFilter.fltGetItFastOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flthideduplicateitems</th>
+                <td>{% if searchFilter.fltHideDuplicateItems %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlistedin</th>
+                <td>{{ searchFilter.fltListedIn }}</td>
+            </tr>
+            <tr>
+                <th>Fltlistingtype</th>
+                <td>{% if searchFilter.fltListingType %}{{ searchFilter.fltListingType|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocalpickuponly</th>
+                <td>{% if searchFilter.fltLocalPickupOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocalsearchonly</th>
+                <td>{% if searchFilter.fltLocalSearchOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocatedin</th>
+                <td>{{ searchFilter.fltLocatedIn }}</td>
+            </tr>
+            <tr>
+                <th>Fltlotsonly</th>
+                <td>{% if searchFilter.fltLotsOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxbids</th>
+                <td>{{ searchFilter.fltMaxBids }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxdistance</th>
+                <td>{{ searchFilter.fltMaxDistance }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxhandlingtime</th>
+                <td>{{ searchFilter.fltMaxHandlingTime }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxprice</th>
+                <td>{{ searchFilter.fltMaxPrice }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxquantity</th>
+                <td>{{ searchFilter.fltMaxQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Fltminbids</th>
+                <td>{{ searchFilter.fltMinBids }}</td>
+            </tr>
+            <tr>
+                <th>Fltminprice</th>
+                <td>{{ searchFilter.fltMinPrice }}</td>
+            </tr>
+            <tr>
+                <th>Fltminquantity</th>
+                <td>{{ searchFilter.fltMinQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Fltmodtimefrom</th>
+                <td>{% if searchFilter.fltModTimeFrom %}{{ searchFilter.fltModTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltoutletselleronly</th>
+                <td>{% if searchFilter.fltOutletSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltpaymentmethod</th>
+                <td>{{ searchFilter.fltPaymentMethod }}</td>
+            </tr>
+            <tr>
+                <th>Fltreturnsacceptedonly</th>
+                <td>{% if searchFilter.fltReturnsAcceptedOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltseller</th>
+                <td>{% if searchFilter.fltSeller %}{{ searchFilter.fltSeller|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltsellerbusinesstype</th>
+                <td>{{ searchFilter.fltSellerBusinessType }}</td>
+            </tr>
+            <tr>
+                <th>Fltsolditemsonly</th>
+                <td>{% if searchFilter.fltSoldItemsOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltstarttimefrom</th>
+                <td>{% if searchFilter.fltStartTimeFrom %}{{ searchFilter.fltStartTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltstarttimeto</th>
+                <td>{% if searchFilter.fltStartTimeTo %}{{ searchFilter.fltStartTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flttopratedselleronly</th>
+                <td>{% if searchFilter.fltTopRatedSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltvalueboxinventory</th>
+                <td>{% if searchFilter.fltValueBoxInventory %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltworldofgoodonly</th>
+                <td>{% if searchFilter.fltWorldOfGoodOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('searchfilters_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('searchfilters_edit', { 'id': searchFilter.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

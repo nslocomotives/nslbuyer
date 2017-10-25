@@ -1,0 +1,208 @@
+{% extends 'baseContainer.html.twig' %}
+
+{% block body %}
+    <h1>Ebayfilter</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ebayFilter.id }}</td>
+            </tr>
+            <tr>
+                <th>Fltname</th>
+                <td>{{ ebayFilter.fltName }}</td>
+            </tr>
+            <tr>
+                <th>Fltauthorizedselleronly</th>
+                <td>{% if ebayFilter.fltAuthorizedSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltavailableto</th>
+                <td>{{ ebayFilter.fltAvailableTo }}</td>
+            </tr>
+            <tr>
+                <th>Fltbestofferonly</th>
+                <td>{% if ebayFilter.fltBestOfferOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcharityonly</th>
+                <td>{% if ebayFilter.fltCharityOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcondition</th>
+                <td>{% if ebayFilter.fltCondition %}{{ ebayFilter.fltCondition|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltcurrency</th>
+                <td>{{ ebayFilter.fltCurrency }}</td>
+            </tr>
+            <tr>
+                <th>Fltendtimefrom</th>
+                <td>{% if ebayFilter.fltEndTimeFrom %}{{ ebayFilter.fltEndTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltendtimeto</th>
+                <td>{% if ebayFilter.fltEndTimeTo %}{{ ebayFilter.fltEndTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexcludeautopay</th>
+                <td>{% if ebayFilter.fltExcludeAutoPay %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fldexcludecategory</th>
+                <td>{% if ebayFilter.fldExcludeCategory %}{{ ebayFilter.fldExcludeCategory|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexcludeseller</th>
+                <td>{% if ebayFilter.fltExcludeSeller %}{{ ebayFilter.fltExcludeSeller|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltexpeditedshippingtype</th>
+                <td>{% if ebayFilter.fltExpeditedShippingType %}{{ ebayFilter.fltExpeditedShippingType|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltfeaturedonly</th>
+                <td>{% if ebayFilter.fltFeaturedOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltfeedbackscoremax</th>
+                <td>{{ ebayFilter.fltFeedbackScoreMax }}</td>
+            </tr>
+            <tr>
+                <th>Fltfeedbackscoremin</th>
+                <td>{{ ebayFilter.fltFeedbackScoreMin }}</td>
+            </tr>
+            <tr>
+                <th>Fltfreeshippingonly</th>
+                <td>{% if ebayFilter.fltFreeShippingOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltgetitfastonly</th>
+                <td>{% if ebayFilter.fltGetItFastOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flthideduplicateitems</th>
+                <td>{% if ebayFilter.fltHideDuplicateItems %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlistedin</th>
+                <td>{{ ebayFilter.fltListedIn }}</td>
+            </tr>
+            <tr>
+                <th>Fltlistingtype</th>
+                <td>{% if ebayFilter.fltListingType %}{{ ebayFilter.fltListingType|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocalpickuponly</th>
+                <td>{% if ebayFilter.fltLocalPickupOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocalsearchonly</th>
+                <td>{% if ebayFilter.fltLocalSearchOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltlocatedin</th>
+                <td>{{ ebayFilter.fltLocatedIn }}</td>
+            </tr>
+            <tr>
+                <th>Fltlotsonly</th>
+                <td>{% if ebayFilter.fltLotsOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxbids</th>
+                <td>{{ ebayFilter.fltMaxBids }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxdistance</th>
+                <td>{{ ebayFilter.fltMaxDistance }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxhandlingtime</th>
+                <td>{{ ebayFilter.fltMaxHandlingTime }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxprice</th>
+                <td>{{ ebayFilter.fltMaxPrice }}</td>
+            </tr>
+            <tr>
+                <th>Fltmaxquantity</th>
+                <td>{{ ebayFilter.fltMaxQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Fltminbids</th>
+                <td>{{ ebayFilter.fltMinBids }}</td>
+            </tr>
+            <tr>
+                <th>Fltminprice</th>
+                <td>{{ ebayFilter.fltMinPrice }}</td>
+            </tr>
+            <tr>
+                <th>Fltminquantity</th>
+                <td>{{ ebayFilter.fltMinQuantity }}</td>
+            </tr>
+            <tr>
+                <th>Fltmodtimefrom</th>
+                <td>{% if ebayFilter.fltModTimeFrom %}{{ ebayFilter.fltModTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltoutletselleronly</th>
+                <td>{% if ebayFilter.fltOutletSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltpaymentmethod</th>
+                <td>{{ ebayFilter.fltPaymentMethod }}</td>
+            </tr>
+            <tr>
+                <th>Fltreturnsacceptedonly</th>
+                <td>{% if ebayFilter.fltReturnsAcceptedOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltseller</th>
+                <td>{% if ebayFilter.fltSeller %}{{ ebayFilter.fltSeller|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltsellerbusinesstype</th>
+                <td>{{ ebayFilter.fltSellerBusinessType }}</td>
+            </tr>
+            <tr>
+                <th>Fltsolditemsonly</th>
+                <td>{% if ebayFilter.fltSoldItemsOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltstarttimefrom</th>
+                <td>{% if ebayFilter.fltStartTimeFrom %}{{ ebayFilter.fltStartTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltstarttimeto</th>
+                <td>{% if ebayFilter.fltStartTimeTo %}{{ ebayFilter.fltStartTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flttopratedselleronly</th>
+                <td>{% if ebayFilter.fltTopRatedSellerOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltvalueboxinventory</th>
+                <td>{% if ebayFilter.fltValueBoxInventory %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fltworldofgoodonly</th>
+                <td>{% if ebayFilter.fltWorldOfGoodOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ebayfilters_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ebayfilters_edit', { 'id': ebayFilter.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

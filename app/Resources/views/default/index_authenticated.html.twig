@@ -1,5 +1,38 @@
-{% extends 'baseContainer.html.twig' %}
+{% extends 'dashboard.html.twig' %}
+
 {% block body %}
+
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-search"></i>
+              </div>
+			{% if searchTally == 0 %}
+			<div class="mr-5">You have do not have any searches!</div>
+            </div>
+			<a class="card-footer text-white clearfix small z-1" href="{{ path('search_new') }}">
+              <span class="float-left">Create your first Search</span>
+			{% elseif searchTally == 1 %}
+			<div class="mr-5">You have {{ searchTally }} search!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="{{ path('search_index') }}">
+              <span class="float-left">View your Search</span>
+			{% else %}
+			<div class="mr-5">You have {{ searchTally }} searches!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="{{ path('search_index') }}">
+              <span class="float-left">View your Search</span>
+			{% endif %}
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
 
 	<p class="lead">{{ rand_message }}</p>
 

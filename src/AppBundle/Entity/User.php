@@ -30,6 +30,16 @@ class User extends BaseUser implements UserNotificationInterface
      */
     protected $tokens;
 	
+	/**
+     * @ORM\OneToMany(targetEntity="Search", mappedBy="user")
+     */
+    private $search;
+	
+	/**
+     * @ORM\OneToMany(targetEntity="EbayFilters", mappedBy="user")
+     */
+    private $ebayFilters;
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -42,6 +52,7 @@ class User extends BaseUser implements UserNotificationInterface
         parent::__construct();
         // your own logic
 		$this->notifications = new ArrayCollection();
+		$this->search = new ArrayCollection();
     }
 	
 	// method implementation for UserNotificationInterface
@@ -78,6 +89,8 @@ class User extends BaseUser implements UserNotificationInterface
 
         return $this;
     }
+	
+	
 
     /**
      * {@inheritdoc}
@@ -120,4 +133,26 @@ class User extends BaseUser implements UserNotificationInterface
     {
         return $this->tokens;
     }
+	
+	/**
+	 * Get search
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	
+	public function getSearch()
+	{
+		return $this->search;
+	}
+	
+	/**
+	 * Get ebayFilters
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	
+	public function getEbayFilters()
+	{
+		return $this->ebayFilters;
+	}
 }

@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Searchfilters list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fltname</th>
+                <th>Fltauthorizedselleronly</th>
+                <th>Fltavailableto</th>
+                <th>Fltbestofferonly</th>
+                <th>Fltcharityonly</th>
+                <th>Fltcondition</th>
+                <th>Fltcurrency</th>
+                <th>Fltendtimefrom</th>
+                <th>Fltendtimeto</th>
+                <th>Fltexcludeautopay</th>
+                <th>Fltexcludecategory</th>
+                <th>Fltexcludeseller</th>
+                <th>Fltexpeditedshippingtype</th>
+                <th>Fltfeaturedonly</th>
+                <th>Fltfeedbackscoremax</th>
+                <th>Fltfeedbackscoremin</th>
+                <th>Fltfreeshippingonly</th>
+                <th>Fltgetitfastonly</th>
+                <th>Flthideduplicateitems</th>
+                <th>Fltlistedin</th>
+                <th>Fltlistingtype</th>
+                <th>Fltlocalpickuponly</th>
+                <th>Fltlocalsearchonly</th>
+                <th>Fltlocatedin</th>
+                <th>Fltlotsonly</th>
+                <th>Fltmaxbids</th>
+                <th>Fltmaxdistance</th>
+                <th>Fltmaxhandlingtime</th>
+                <th>Fltmaxprice</th>
+                <th>Fltmaxquantity</th>
+                <th>Fltminbids</th>
+                <th>Fltminprice</th>
+                <th>Fltminquantity</th>
+                <th>Fltmodtimefrom</th>
+                <th>Fltoutletselleronly</th>
+                <th>Fltpaymentmethod</th>
+                <th>Fltreturnsacceptedonly</th>
+                <th>Fltseller</th>
+                <th>Fltsellerbusinesstype</th>
+                <th>Fltsolditemsonly</th>
+                <th>Fltstarttimefrom</th>
+                <th>Fltstarttimeto</th>
+                <th>Flttopratedselleronly</th>
+                <th>Fltvalueboxinventory</th>
+                <th>Fltworldofgoodonly</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for searchFilter in searchFilters %}
+            <tr>
+                <td><a href="{{ path('searchfilters_show', { 'id': searchFilter.id }) }}">{{ searchFilter.id }}</a></td>
+                <td>{{ searchFilter.fltName }}</td>
+                <td>{% if searchFilter.fltAuthorizedSellerOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltAvailableTo }}</td>
+                <td>{% if searchFilter.fltBestOfferOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltCharityOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltCondition %}{{ searchFilter.fltCondition|join(', ') }}{% endif %}</td>
+                <td>{{ searchFilter.fltCurrency }}</td>
+                <td>{% if searchFilter.fltEndTimeFrom %}{{ searchFilter.fltEndTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if searchFilter.fltEndTimeTo %}{{ searchFilter.fltEndTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if searchFilter.fltExcludeAutoPay %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltExcludeCategory %}{{ searchFilter.fltExcludeCategory|join(', ') }}{% endif %}</td>
+                <td>{% if searchFilter.fltExcludeSeller %}{{ searchFilter.fltExcludeSeller|join(', ') }}{% endif %}</td>
+                <td>{{ searchFilter.fltExpeditedShippingType }}</td>
+                <td>{% if searchFilter.fltFeaturedOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltFeedbackScoreMax }}</td>
+                <td>{{ searchFilter.fltFeedbackScoreMin }}</td>
+                <td>{% if searchFilter.fltFreeShippingOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltGetItFastOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltHideDuplicateItems %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltListedIn }}</td>
+                <td>{% if searchFilter.fltListingType %}{{ searchFilter.fltListingType|join(', ') }}{% endif %}</td>
+                <td>{% if searchFilter.fltLocalPickupOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltLocalSearchOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltLocatedIn }}</td>
+                <td>{% if searchFilter.fltLotsOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltMaxBids }}</td>
+                <td>{{ searchFilter.fltMaxDistance }}</td>
+                <td>{{ searchFilter.fltMaxHandlingTime }}</td>
+                <td>{{ searchFilter.fltMaxPrice }}</td>
+                <td>{{ searchFilter.fltMaxQuantity }}</td>
+                <td>{{ searchFilter.fltMinBids }}</td>
+                <td>{{ searchFilter.fltMinPrice }}</td>
+                <td>{{ searchFilter.fltMinQuantity }}</td>
+                <td>{% if searchFilter.fltModTimeFrom %}{{ searchFilter.fltModTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if searchFilter.fltOutletSellerOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ searchFilter.fltPaymentMethod }}</td>
+                <td>{% if searchFilter.fltReturnsAcceptedOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltSeller %}{{ searchFilter.fltSeller|join(', ') }}{% endif %}</td>
+                <td>{{ searchFilter.fltSellerBusinessType }}</td>
+                <td>{% if searchFilter.fltSoldItemsOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltStartTimeFrom %}{{ searchFilter.fltStartTimeFrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if searchFilter.fltStartTimeTo %}{{ searchFilter.fltStartTimeTo|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if searchFilter.fltTopRatedSellerOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltValueBoxInventory %}Yes{% else %}No{% endif %}</td>
+                <td>{% if searchFilter.fltWorldOfGoodOnly %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('searchfilters_show', { 'id': searchFilter.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('searchfilters_edit', { 'id': searchFilter.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('searchfilters_new') }}">Create a new searchFilter</a>
+        </li>
+    </ul>
+{% endblock %}

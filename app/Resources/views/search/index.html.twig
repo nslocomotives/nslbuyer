@@ -1,25 +1,31 @@
-{% extends 'baseContainer.html.twig' %}
+{% extends 'dashboard.html.twig' %}
+
+{% block bcTitle %}Searches{% endblock %}
 
 {% block body %}
-    <h1>Searches list</h1>
-
+	<div class="card mb-3">
+        <div class="card-header">
+		<i class="fa fa-search" aria-hidden="true"></i> Your Searches
+		  <div class="btn-group btn-group-sm pull-right" role="toolbar" >
+		    <a class="btn btn-primary" href="{{ path('search_new') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+	      </div>
+		</div>
+	{% if searches %}
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Keywords</th>
-                <th>Descriptionsearch</th>
-                <th>Listingtype</th>
-                <th>Maxprice</th>
-                <th>Sortorder</th>
+                <th>Description Search</th>
+                <th>Listing Type</th>
+                <th>Max Price</th>
+                <th>Sort Order</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for search in searches %}
             <tr>
-                <td><a href="{{ path('search_show', { 'id': search.id }) }}">{{ search.id }}</a></td>
                 <td>{{ search.name }}</td>
                 <td>{% if search.keywords %}{{ search.keywords|join(', ') }}{% endif %}</td>
                 <td>{% if search.descriptionSearch %}Yes{% else %}No{% endif %}</td>
@@ -27,23 +33,46 @@
                 <td>{{ search.maxPrice }}</td>
                 <td>{{ search.sortOrder }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('search_show', { 'id': search.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('search_edit', { 'id': search.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <div class="btn-group btn-group-sm">
+						<a class="btn btn-danger" role="button" data-toggle="modal" data-target="#deleteModal{{ search.id }}"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-primary" href="{{ path('search_edit', { 'id': search.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a class="btn btn-success" href="{{ path('search_run', { 'id': search.id }) }}">Run Search</a>
+
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+	{% else %}
+		<div class="card-body">
+	<p>Looks like you haven't created any searches yet.</p>
+	<a class="btn btn-primary" href="{{ path('search_new') }}"><i class="fa fa-plus" aria-hidden="true"></i> Create a new search</a>
+	</div>
+	</div>
+	{% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('search_new') }}">Create a new search</a>
-        </li>
-    </ul>
+{% if searches %}
+{% for search in searches %}			
+<!-- Logout Modal-->
+    <div class="modal fade" id="deleteModal{{ search.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal{{ search.id }}Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModal{{ search.id }}Label">Delete Search {{ search.name }}</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure you want to delete this item?</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+{% endif %}	
+
 {% endblock %}
